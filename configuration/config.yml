@@ -1,0 +1,7 @@
+check: "this is a check"
+decrypt:
+  key: MDEyMzQ1Njc4OWFiY2RlZg==
+  iv: YWJjZGVmMDEyMzQ1Njc4OQ==
+translate:
+  from_lang: 'ar'
+  to_lang: 'en'
