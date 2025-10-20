@@ -1,5 +1,5 @@
 decryptor:
-  chosen: aes
+  chosen: "aes"
   handlers:
     aes:
       module:
@@ -19,3 +19,12 @@ translator:
       parameters:
         from_lang: "ar"
         to_lang: "en"
+language_detector:
+  chosen: "langdetect"
+  handlers:
+    langdetect:
+      module:
+        path: "src.language_detector.handlers"
+        class_name: "LangDetectDetector"
+      parameters:
+        default: True

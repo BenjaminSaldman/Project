@@ -12,6 +12,12 @@ class TranslatorConfig(BaseModel):
     handlers: Dict[str, Any]
 
 
+class LanguageDetectorConfig(BaseModel):
+    chosen: str
+    handlers: Dict[str, Any]
+
+
 class Configuration(BaseModel):
     decryptor: DecryptorConfig
     translator: TranslatorConfig
+    language_detector: LanguageDetectorConfig
