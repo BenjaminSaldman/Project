@@ -1,11 +1,21 @@
-check: "this is a check"
-decrypt:
-  decrypt_type:
-    module: 'src.Decrypt.decryptions'
-    class_name: 'Aes'
-  key: MDEyMzQ1Njc4OWFiY2RlZg==
-  aes:
-    iv: YWJjZGVmMDEyMzQ1Njc4OQ==
-translate:
-  from_lang: 'ar'
-  to_lang: 'en'
+decryptor:
+  chosen: aes
+  handlers:
+    aes:
+      module:
+        path: "src.decrypt.handlers"
+        class_name: "AesDecryptor"
+      parameters:
+        key: "MDEyMzQ1Njc4OWFiY2RlZg=="
+        iv: "YWJjZGVmMDEyMzQ1Njc4OQ=="
+        encode: "utf-8"
+translator:
+  chosen: "argostranslate"
+  handlers:
+    argostranslate:
+      module:
+        path: "src.translate.handlers"
+        class_name: "Argostranslate"
+      parameters:
+        from_lang: "ar"
+        to_lang: "en"
