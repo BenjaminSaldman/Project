@@ -1,7 +1,11 @@
 check: "this is a check"
 decrypt:
+  decrypt_type:
+    module: 'src.Decrypt.decryptions'
+    class_name: 'Aes'
   key: MDEyMzQ1Njc4OWFiY2RlZg==
-  iv: YWJjZGVmMDEyMzQ1Njc4OQ==
+  aes:
+    iv: YWJjZGVmMDEyMzQ1Njc4OQ==
 translate:
   from_lang: 'ar'
   to_lang: 'en'

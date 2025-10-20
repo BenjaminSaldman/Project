@@ -3,15 +3,43 @@ import typing as t
 
 
 @dataclass
-class Decrypt:
-    key: bytes
+class DecryptType:
+    module: str
+    class_name: str
+
+    @classmethod
+    def from_dict(cls: t.Type["DecryptType"], my_object: dict):
+        return cls(
+            module=my_object["module"],
+            class_name=my_object["class_name"]
+        )
+
+
+@dataclass
+class AesDecryptType:
     iv: bytes
 
     @classmethod
-    def from_dict(cls: t.Type["Decrypt"], my_object: dict):
+    def from_dict(cls: t.Type["AesDecryptType"], my_object: dict):
         return cls(
-            key=my_object["key"],
             iv=my_object["iv"]
+        )
+
+
+@dataclass
+class Decrypt:
+    decrypt_type: DecryptType
+    key: bytes
+    aes: AesDecryptType
+
+    @classmethod
+    def from_dict(cls: t.Type["Decrypt"], my_object: dict):
+        decrypt_type = DecryptType.from_dict(my_object["decrypt_type"])
+        aes = AesDecryptType.from_dict(my_object["aes"])
+        return cls(
+            decrypt_type=decrypt_type,
+            key=my_object["key"],
+            aes=aes,
         )
 
 

@@ -6,9 +6,10 @@ from src.configuration import Decrypt
 
 
 class Aes(Decryptor):
-    def __init__(self, config_vars: Decrypt):
-        super().__init__(base64.b64decode(config_vars.key))
-        self.iv = base64.b64decode(config_vars.iv)
+    def __init__(self, decrypt_config_vars: Decrypt):
+        aes_config_vars = decrypt_config_vars.aes
+        super().__init__(base64.b64decode(decrypt_config_vars.key))
+        self.iv = base64.b64decode(aes_config_vars.iv)
 
     def decrypt(self, encrypted_data) -> str:
         cipher = Cipher(
