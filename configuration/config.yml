@@ -3,7 +3,7 @@ decryptor:
   handlers:
     aes:
       module:
-        path: "src.decrypt.handlers"
+        path: "src.services.decrypt.handlers"
         class_name: "AesDecryptor"
       parameters:
         key: "MDEyMzQ1Njc4OWFiY2RlZg=="
@@ -14,7 +14,7 @@ translator:
   handlers:
     argostranslate:
       module:
-        path: "src.translate.handlers"
+        path: "src.services.translate.handlers"
         class_name: "Argostranslate"
       parameters:
         from_lang: "ar"
@@ -24,7 +24,7 @@ language_detector:
   handlers:
     langdetect:
       module:
-        path: "src.language_detector.handlers"
+        path: "src.services.language_detector.handlers"
         class_name: "LangDetectDetector"
       parameters:
         default: True
@@ -33,7 +33,7 @@ data_receiver:
   handlers:
     file_explorer:
       module:
-        path: "src.receiver.handlers"
+        path: "src.services.receiver.handlers"
         class_name: "FileExplorerReceiver"
       parameters:
         directory_location: "C://Users//USER//Translator//pythonProject//checkky"

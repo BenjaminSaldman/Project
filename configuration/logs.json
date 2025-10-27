@@ -7,7 +7,7 @@
     }
   },
   "handlers": {
-    "debug_handler": {
+    "dev_handler": {
       "class": "configuration.size_timed_rotating_file_handler.SizeTimedRotatingFileHandler",
       "filename": "logs/debug_handler.log",
       "formatter": "default",
@@ -18,9 +18,9 @@
     }
   },
   "loggers": {
-    "": {
+    "dev": {
       "level": "DEBUG",
-      "handlers": ["debug_handler"],
+      "handlers": ["dev_handler"],
       "propagate": false
     }
   }
