@@ -28,3 +28,14 @@ language_detector:
         class_name: "LangDetectDetector"
       parameters:
         default: True
+data_receiver:
+  chosen: "file_explorer"
+  handlers:
+    file_explorer:
+      module:
+        path: "src.receiver.handlers"
+        class_name: "FileExplorerReceiver"
+      parameters:
+        directory_location: "C://Users//USER//Translator//pythonProject//checkky"
+        encoding: "utf-8"
+        read_type: "rb"

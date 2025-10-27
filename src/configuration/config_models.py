@@ -1,5 +1,6 @@
-from pydantic import BaseModel
 from typing import Any, Dict
+
+from pydantic import BaseModel
 
 
 class DecryptorConfig(BaseModel):
@@ -17,7 +18,13 @@ class LanguageDetectorConfig(BaseModel):
     handlers: Dict[str, Any]
 
 
+class DataReceiverConfig(BaseModel):
+    chosen: str
+    handlers: Dict[str, Any]
+
+
 class Configuration(BaseModel):
     decryptor: DecryptorConfig
     translator: TranslatorConfig
     language_detector: LanguageDetectorConfig
+    data_receiver: DataReceiverConfig

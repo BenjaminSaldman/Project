@@ -1,7 +1,8 @@
-from src.translate import Translator
+from src.configuration import Configuration, load_config
 from src.decrypt import Decryptor
 from src.language_detector import LanguageDetector
-from src.configuration import Configuration, load_config
+from src.receiver import DataReceiver
+from src.translate import Translator
 
 
 def main():
@@ -10,14 +11,18 @@ def main():
 
     decryptor = Decryptor(config_object.decryptor)
 
-    encrypted_bytes = b'\x12{\xe6\xd9\x93\x8c\xd8\x15\x93\xaa4n)\xc9\xa7v\xb9h\xe356s\xab\x80\xf5v:v\x07\x81\xc2\xe1[\xb3X\x0c\xc7A\xc3VZ\xca\xaa\xa26=(\x83'
-    plaintext = decryptor.decrypt(encrypted_bytes)
-    print("Decrypted:", plaintext)
+    data_receiver = DataReceiver(config_object.data_receiver)
+    data_receiver_iterator = data_receiver.receive_data()
 
-    language_detector = LanguageDetector(config_object.language_detector)
+    for encrypted_file_content in data_receiver_iterator:
+        plaintext = decryptor.decrypt(encrypted_file_content)
+        print("Decrypted:", plaintext)
 
-    translator = Translator(config_object.translator)
-    print(translator.translate(plaintext, language_detector.detect(plaintext[:50])))
+        language_detector = LanguageDetector(config_object.language_detector)
+
+        translator = Translator(config_object.translator)
+        print(translator.translate(plaintext, language_detector.detect(plaintext[:50])))
+        print('*************************')
 
 
 if __name__ == '__main__':
