@@ -6,5 +6,5 @@ class LangDetectDetector(AbstractLanguageDetector):
     def __init__(self, default: bool):
         self.default = default
 
-    def detect(self, raw_data) -> str:
-        return detect(raw_data)
+    def detect(self, raw_data):
+        return raw_data, detect(raw_data)

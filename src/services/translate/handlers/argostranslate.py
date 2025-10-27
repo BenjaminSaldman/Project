@@ -17,4 +17,5 @@ class Argostranslate(AbstractTranslate):
     def translate(self, text, from_lang=None):
         if from_lang is None:
             from_lang = self.from_lang
-        return argostranslate.translate.translate(text, from_lang, self.to_lang)
+        translated_text = argostranslate.translate.translate(text, from_lang, self.to_lang)
+        return translated_text
